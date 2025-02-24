@@ -27,7 +27,7 @@ public class FirstSteps {
     }
 
     public boolean isInsideRect(int xLeft, int yTop, int xRight, int yBottom, int x, int y){
-        return xLeft <= x && x <= xRight && yBottom <= y && y <= yTop;
+        return xLeft <= x && x <= xRight && y >= yTop && y <= yBottom;
     }
 
     public int sum(int[] array){
@@ -126,11 +126,8 @@ public class FirstSteps {
     public int diagonalMax(int[][] matrix){
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < matrix.length; i++){
-            try {
-                if (max < matrix[i][i]) max = matrix[i][i];
-            }
-            catch (ArrayIndexOutOfBoundsException e){
-                break;
+            if (i < matrix[i].length && matrix[i][i] > max) {
+                max = matrix[i][i];
             }
         }
         return max;
